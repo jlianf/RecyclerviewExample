@@ -17,5 +17,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ListOneActivity::class.java)
             startActivity(intent)
         }
+
+        binding.btnTwo.setOnClickListener{
+            val intent = Intent(this, ListTwoActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
