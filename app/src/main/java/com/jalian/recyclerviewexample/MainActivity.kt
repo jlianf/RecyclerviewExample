@@ -22,5 +22,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ListTwoActivity::class.java)
             startActivity(intent)
         }
+
+        binding.btnThree.setOnClickListener{
+            val intent = Intent(this, ListThreeActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
