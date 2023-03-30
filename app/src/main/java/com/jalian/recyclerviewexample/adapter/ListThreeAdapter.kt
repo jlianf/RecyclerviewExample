@@ -9,15 +9,21 @@ import com.jalian.recyclerviewexample.databinding.ItemListThreeBinding
 
 class ListThreeAdapter : RecyclerView.Adapter<ListThreeViewHolder>() {
     private val items : MutableList<Cat> = mutableListOf()
+    private var onItemClickListener : ((Int, Cat) -> Unit)? = null
 
     fun addItems(newItem : List<Cat>){
         items.addAll(newItem)
         notifyDataSetChanged()
     }
 
+    fun onItemClick(itemClick : (Int, Cat) -> Unit ){
+        onItemClickListener = itemClick
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListThreeViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_list_three, parent, false)
+
         val binding = ItemListThreeBinding.bind(view)
 
         return ListThreeViewHolder(binding)
@@ -29,7 +35,7 @@ class ListThreeAdapter : RecyclerView.Adapter<ListThreeViewHolder>() {
 
     override fun onBindViewHolder(holder: ListThreeViewHolder, position: Int) {
        val item = items[position]
-        holder.bind(item)
+        holder.bind(item, position, onItemClickListener)
     }
 
 
